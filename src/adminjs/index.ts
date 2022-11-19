@@ -14,6 +14,9 @@ export const adminJs = new AdminJS({
     databases: [sequelize],
     rootPath: "/admin", 
     locale: locale, 
+    dashboard: {
+        component: AdminJS.bundle('./components/Dashboard')
+    }, 
     resources: adminJsResources, 
     branding: {
         companyName: 'OneBitFlix',
