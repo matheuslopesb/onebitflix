@@ -3,12 +3,12 @@ import { Course } from "./Course";
 import { Episode } from "./Episode";
 import { User } from "./User";
 
-// Relation Category - Course
-Category.hasMany(Course, { as: "courses" })
-Course.belongsTo(Category)
 
-// Relation Course - Episode
-Course.hasMany(Episode)
+Category.hasMany(Course, { as: "courses" })
+
+Course.belongsTo(Category)
+Course.hasMany(Episode, { as: "episodes" })
+
 Episode.belongsTo(Course)
 
 export {
