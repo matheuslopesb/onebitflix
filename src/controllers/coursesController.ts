@@ -26,6 +26,20 @@ export const coursesController = {
         }
     }, 
 
+    // GET /courses/search
+    async search(req: Request, res: Response) {
+        const { name } = req.query;
+        try {
+            if (typeof name !== 'string') throw new Error('name param must to be of type string')
+            const courses = await courseService.findByName(name);
+            return res.json(courses);
+        } catch (error) {
+            if(error instanceof Error) {
+                return res.status(400).json({ message: error.message })
+            }
+        }
+    }, 
+
     // GET /courses/:id
     async show(req: Request, res: Response) {
         const { id } = req.params;
