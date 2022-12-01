@@ -1,6 +1,6 @@
 import { Course } from "../models";
 
-export const courseService= {
+export const courseService = {
     async findByIdWithEpisodes(id: string) {
         const courseWithEpisodes = await Course.findByPk(id, {
             attributes: [
