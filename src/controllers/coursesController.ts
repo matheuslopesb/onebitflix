@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { getPaginationParams } from "../helpers/getPaginationParams";
 import { courseService } from "../services/courseService";
 
 export const coursesController = {
@@ -29,9 +30,10 @@ export const coursesController = {
     // GET /courses/search
     async search(req: Request, res: Response) {
         const { name } = req.query;
+        const [page, perPage] = getPaginationParams(req.query); 
         try {
             if (typeof name !== 'string') throw new Error('name param must to be of type string')
-            const courses = await courseService.findByName(name);
+            const courses = await courseService.findByName(name, page, perPage);
             return res.json(courses);
         } catch (error) {
             if(error instanceof Error) {

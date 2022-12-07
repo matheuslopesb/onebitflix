@@ -56,8 +56,9 @@ export const courseService = {
         return courses;
     }, 
 
-    async findByName(name: string) {
-        const courses = await Course.findAll({
+    async findByName(name: string, page: number, perPage: number) {
+        const offset = (page - 1) * perPage
+        const { count, rows } = await Course.findAndCountAll({
             attributes: [
                 'id', 
                 'name', 
@@ -68,9 +69,16 @@ export const courseService = {
                 name: {
                     [Op.iLike]: `%${name}%`
                 }
-            }
+            }, 
+            limit: perPage,
+            offset
         })
 
-        return courses;
+        return {
+            courses: rows, 
+            page, 
+            perPage, 
+            total: count
+        };
     }
 }
