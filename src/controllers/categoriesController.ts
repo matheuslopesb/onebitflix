@@ -4,7 +4,7 @@ import { categoryService } from '../services/categoryService';
 
 export const categoriesController = {
     // GET /categories
-    async index(req: Request, res: Response) {
+    index: async (req: Request, res: Response) => {
         const [page, perPage] = getPaginationParams(req.query); 
 
         try {
@@ -20,7 +20,7 @@ export const categoriesController = {
     }, 
     
     // GET /categories/:id
-    async show(req: Request, res: Response) {
+    show: async (req: Request, res: Response) => {
         const { id } = req.params; 
 
         try {

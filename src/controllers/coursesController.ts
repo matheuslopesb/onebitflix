@@ -4,7 +4,7 @@ import { courseService } from "../services/courseService";
 
 export const coursesController = {
     // GET /courses/featured
-    async featured(req: Request, res: Response) {
+    featured: async (req: Request, res: Response) => {
         try {
             const featuredCourses = await courseService.getRandomFeaturedCourses();
             return res.json(featuredCourses); 
@@ -16,7 +16,7 @@ export const coursesController = {
     }, 
 
     // GET /courses/newest
-    async newest(req: Request, res: Response) {
+    newest: async (req: Request, res: Response) => {
         try {
             const newestCourses = await courseService.getTenTopNewest();
             return res.json(newestCourses);
@@ -28,7 +28,7 @@ export const coursesController = {
     }, 
 
     // GET /courses/search
-    async search(req: Request, res: Response) {
+    search: async (req: Request, res: Response) => {
         const { name } = req.query;
         const [page, perPage] = getPaginationParams(req.query); 
         try {
@@ -43,7 +43,7 @@ export const coursesController = {
     }, 
 
     // GET /courses/:id
-    async show(req: Request, res: Response) {
+    show: async (req: Request, res: Response) => {
         const { id } = req.params;
 
         try {
