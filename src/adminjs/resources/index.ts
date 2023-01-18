@@ -8,12 +8,12 @@ import { userResourceOptions } from "./user";
 export const adminJsResources: ResourceWithOptions[] = [
     {
         resource: Category, 
-        options: categoryResourceOptions, 
-        features: courseResourceFeatures
+        options: categoryResourceOptions
     }, 
     {
         resource: Course, 
-        options: courseResourceOptions
+        options: courseResourceOptions, 
+        features: courseResourceFeatures
     }, 
     {
         resource: Episode, 
