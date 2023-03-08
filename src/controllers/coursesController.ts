@@ -10,7 +10,7 @@ export const coursesController = {
     featured: async (req: Request, res: Response) => {
         try {
             const featuredCourses = await courseService.getRandomFeaturedCourses();
-            return res.json(featuredCourses); 
+            return res.status(200).json(featuredCourses); 
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
@@ -22,7 +22,7 @@ export const coursesController = {
     newest: async (req: Request, res: Response) => {
         try {
             const newestCourses = await courseService.getTenTopNewest();
-            return res.json(newestCourses);
+            return res.status(200).json(newestCourses);
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
@@ -34,7 +34,7 @@ export const coursesController = {
     popular: async (req: Request, res: Response) => {
         try {
             const topTen = await courseService.getTopTenByLikes();
-            return res.json(topTen);
+            return res.status(200).json(topTen);
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
@@ -49,7 +49,7 @@ export const coursesController = {
         try {
             if (typeof name !== 'string') throw new Error('name param must to be of type string')
             const courses = await courseService.findByName(name, page, perPage);
-            return res.json(courses);
+            return res.status(200).json(courses);
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
@@ -71,7 +71,7 @@ export const coursesController = {
 
             const liked = await likeService.isLiked(userId, Number(courseId))
             const favorited = await favoriteService.isFavorited(userId, Number(courseId))
-            return res.json({ ...course.get(), favorited, liked })
+            return res.status(200).json({ ...course.get(), favorited, liked })
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })

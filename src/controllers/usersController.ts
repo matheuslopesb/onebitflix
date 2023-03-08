@@ -8,7 +8,7 @@ export const usersController = {
         const currentUser = req.user!;
 
         try {
-            return res.json(currentUser)
+            return res.status(200).json(currentUser)
         } catch (err) {
             if (err instanceof Error) {
                 return res.status(400).json({ message: err.message })
@@ -30,7 +30,7 @@ export const usersController = {
                 birth
             })
 
-            return res.json(updatedUser)
+            return res.status(200).json(updatedUser)
         } catch (err) {
             if (err instanceof Error) {
                 return res.status(400).json({ message: err.message })

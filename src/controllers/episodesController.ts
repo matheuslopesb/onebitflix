@@ -27,7 +27,7 @@ export const episodesController = {
 
         try {
             const watchTime = await episodeService.getWatchTime(userId, Number(episodeId))
-            return res.json(watchTime)
+            return res.status(200).json(watchTime)
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
@@ -47,7 +47,7 @@ export const episodesController = {
                 episodeId, 
                 seconds
             })
-            return res.json(watchTime)
+            return res.status(200).json(watchTime)
         } catch (error) {
             if(error instanceof Error) {
                 return res.status(400).json({ message: error.message })
