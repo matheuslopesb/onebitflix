@@ -4,7 +4,11 @@ api/node_modules/
 api/uploads/*
 api/public/thumbnails
 
+api/.env
+
 # CLIENT
+
+client/.env
 
 # dependencies
 client/node_modules

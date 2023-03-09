@@ -16,5 +16,5 @@ export const authtenticationOptions: AuthenticationOptions = {
 
         return false
     },
-    cookiePassword: 'senha-do-cookie'
+    cookiePassword: process.env.COOKIE_PASSWORD!
 }

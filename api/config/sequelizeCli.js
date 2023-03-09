@@ -5,6 +5,6 @@ module.exports = {
         port: '5432',
         database: 'onebitflix_development',
         username: 'onebitflix',
-        password: 'onebitflix'
+        password: process.env.SEQUELIZE_DEVELOPMENT_PASSWORD
     }
 }
