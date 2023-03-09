@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken"
 
+require("dotenv").config();
+
 const secret = process.env.JWT_SECRET!
 
 export const jwtService = {
