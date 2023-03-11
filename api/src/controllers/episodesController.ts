@@ -47,6 +47,7 @@ export const episodesController = {
                 episodeId, 
                 seconds
             })
+
             return res.status(200).json(watchTime)
         } catch (error) {
             if(error instanceof Error) {
